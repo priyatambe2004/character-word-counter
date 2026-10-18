@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character and Word Counter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <h1>Character &amp; Word Counter</h1>
+      <p class="hint">Start typing or paste your text. The counts update as you type.</p>
+    </header>
+
+    <div class="layout">
+      <!-- Writing area -->
+      <section class="writer">
+        <label for="text" class="sr-only">Your text</label>
+        <textarea id="text" placeholder="Type or paste your text here..." spellcheck="true"></textarea>
+
+        <div class="limit-box">
+          <div class="limit-row">
+            <label for="limit">Character limit</label>
+            <select id="limit">
+              <option value="0">No limit</option>
+              <option value="160">SMS / meta description (160)</option>
+              <option value="280">X post (280)</option>
+              <option value="3000">LinkedIn post (3,000)</option>
+            </select>
+          </div>
+          <div class="limit-bar" id="limit-bar" hidden>
+            <div class="limit-track"><div id="limit-fill" class="limit-fill"></div></div>
+            <p id="limit-text" class="limit-text"></p>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <button type="button" id="sample" class="secondary">✨ Sample text</button>
+          <button type="button" id="copy" class="secondary">📋 Copy text</button>
+          <button type="button" id="clear" class="danger">🗑 Clear</button>
+        </div>
+        <p id="toast" class="toast" role="status"></p>
+      </section>
+
+      <!-- Results -->
+      <aside class="stats" aria-label="Text statistics">
+        <div class="big-grid">
+          <div class="big c-violet"><strong id="s-chars">0</strong><span>Characters</span></div>
+          <div class="big c-pink"><strong id="s-words">0</strong><span>Words</span></div>
+          <div class="big c-amber"><strong id="s-sentences">0</strong><span>Sentences</span></div>
+          <div class="big c-sky"><strong id="s-paragraphs">0</strong><span>Paragraphs</span></div>
+        </div>
+
+        <dl class="details">
+          <div><dt>Characters (no spaces)</dt><dd id="s-nospace">0</dd></div>
+          <div><dt>Reading time</dt><dd id="s-read">0 sec</dd></div>
+          <div><dt>Speaking time</dt><dd id="s-speak">0 sec</dd></div>
+          <div><dt>Longest word</dt><dd id="s-longest">–</dd></div>
+          <div><dt>Average word length</dt><dd id="s-avg">0</dd></div>
+        </dl>
+
+        <div class="keywords">
+          <h2>Most used words</h2>
+          <ul id="top-words"></ul>
+          <p id="top-empty" class="muted">Write a few sentences to see your top words.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
